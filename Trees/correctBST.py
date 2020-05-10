@@ -12,6 +12,11 @@ class Node:
         self.data = data
 
 def getIncorrectNodes(root):
+    """
+    Find the 2 incorrect nodes
+    :param root: current root node
+    :return: None
+    """
     global temp
     global node1
     global node2
@@ -27,6 +32,13 @@ def getIncorrectNodes(root):
         getIncorrectNodes(root.right)
 
 def swapNodes(root, n1, n2):
+    """
+    Swap the data of incorrect nodes
+    :param root: current root node
+    :param n1: data of first node
+    :param n2: data of second node
+    :return: None
+    """
     global node1
     global node2
     if root:
@@ -38,12 +50,21 @@ def swapNodes(root, n1, n2):
         swapNodes(root.right, n1, n2)
 
 def printBST(root):
+    """
+    Utility method to print inorder traversal
+    :param root: current root node
+    :return: None
+    """
     if root:
         printBST(root.left)
         print(root.data, end=' ')
         printBST(root.right)
 
 def main():
+    """
+    Driver Code
+    :return: None
+    """
     global node1
     global node2
     root = Node(6)
@@ -58,8 +79,10 @@ def main():
     printBST(root)
     print()
     print()
+
     getIncorrectNodes(root)
     swapNodes(root, node1.data, node2.data)
+
     print('Inorder Traversal of Corrected Tree:')
     printBST(root)
 
